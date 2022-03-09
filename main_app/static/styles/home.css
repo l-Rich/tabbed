@@ -1,0 +1,20 @@
+.top{
+    background-image: url('https://github.com/l-Rich/tabbed/blob/52c79adb2cf2477ec1feb3929dfc6751b955040e/Untitled%20(24%20%C3%97%2018%20in).png?raw=true');
+    background-size: contain;
+    width: 800vh;
+    height: 400vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+}
+#heading{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 65px;
+    inline-size: 500px;
+    text-shadow: 4px 4px grey;
+    padding-left: 40px;
+    padding-top: 30px;
+}
+button{
+    align-content: center;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1> Upcoming Trips </h1>
+
+{% for trip in trips %}
+<div class="card" style="width: 18rem;">
+    <img src="https://completewellbeing.com/wp-content/uploads/2016/09/i-need-a-vacation.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{trip.name}}</h5>
+      <p>{{trip.date}}</p>
+      <p class="card-text">{{trip.country}}, {{trip.state}}, {{trip.city}}</p>
+      <a href="#" class="btn btn-primary">View</a>
+    </div>
+  </div>
+
+  {% endfor %}
+
+{% endblock %}
