@@ -1,20 +1,21 @@
-.top{
-    background-image: url('https://github.com/l-Rich/tabbed/blob/52c79adb2cf2477ec1feb3929dfc6751b955040e/Untitled%20(24%20%C3%97%2018%20in).png?raw=true');
-    background-size: contain;
-    width: 800vh;
-    height: 400vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    color: whitesmoke;
-}
 #heading{
     font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 65px;
+    font-size: 60px;
     inline-size: 500px;
-    text-shadow: 4px 4px grey;
-    padding-left: 40px;
-    padding-top: 30px;
+    text-shadow: 3px 3px 6px grey;
+    padding-left: 80px;
+    padding-top: 50px;
+    color: black;
+    background-image: url('https://github.com/l-Rich/tabbed/blob/master/Untitled%20(24%20%C3%97%2018%20in).png?raw=true')
 }
-button{
-    align-content: center;
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
 }

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{{trip.name}}
+{{trip.country}}
+{{trip.state}}
+{{trip.city}}
+
+{% for activity in trip.activity.all %}
+
+{{activity.name}}
+{{activity.price}}
+
+{% empty %}
+No Activities have been planned yet
+{% endfor %}
+
+{{lodging.name}}
+{{loding.price}}
+
+<form action="{% url 'activity_create' trip.pk %}" method="post">
+    {% csrf_token %}
+    <div>
+        <div >
+            <input
+                class="input"
+                type="text"
+                name="name"
+                placeholder="Name of Activity"
+                required
+            />
+        </div>
+        <div>
+            <input
+                class="input"
+                type="number"
+                name="price"
+                placeholder="Price"
+                required
+            />
+        </div>
+        <div>
+            <input type="submit" value="Add Activity" />
+        </div>
+    </div>
+</form>
+{% endblock %}

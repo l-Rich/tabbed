@@ -21,3 +21,24 @@ class Traveler(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
+class Lodging(models.Model):
+    name= models.CharField(max_length=30)
+    type = models.CharField(max_length=30)
+    price = models.IntegerField()
+    max_occupants = models.IntegerField()
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE, related_name="lodging")
+        
+    def __str__(self):
+        return self.name
+
+class Activity(models.Model):
+    name = models.CharField(max_length=250)
+    price = models.CharField(max_length=30)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE, related_name="activity")
+    
+    def __str__(self):
+        return self.name
+    
+
+
+

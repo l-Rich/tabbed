@@ -9,7 +9,7 @@
       <h5 class="card-title">{{trip.name}}</h5>
       <p>{{trip.date}}</p>
       <p class="card-text">{{trip.country}}, {{trip.state}}, {{trip.city}}</p>
-      <a href="#" class="btn btn-primary">View</a>
+      <a href="{% url 'trip_detail' trip.pk %}" class="btn btn-primary">View</a>
     </div>
   </div>
 
