@@ -14,20 +14,13 @@
     <title>Tabbed - {% block title %}{% endblock %}</title>
 </head>
 <body>
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
+  <div class="nav-container">
+    <div class="logo"><img src="https://github.com/l-Rich/tabbed/blob/master/with%20copy.png?raw=true" style="width:100px"></div>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link disabled">Disabled</a>
+  </div>
     {% block content %}{% endblock %}
 </body>
 </html>

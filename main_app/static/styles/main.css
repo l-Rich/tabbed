@@ -1,0 +1,12 @@
+.nav-container{
+    display: grid;
+    justify-content: space-evenly;
+}
+/* .logo{
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+.nav{
+    align-content: space-between;
+    right: 0px
+} */
