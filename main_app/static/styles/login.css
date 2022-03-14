@@ -4,7 +4,7 @@
     justify-content: center; 
     align-items: center;
 }
-.button:link{
+.button{
     background-color:rgb(0, 0, 0);
     border: none;
     color: rgba(255, 255, 255, 0.884);
@@ -12,14 +12,10 @@
     text-align: center;
     font-size: 16px;
     border-radius: 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 20px
+    margin: 10px;
 }
 .picture{
     justify-content: center;
-    margin-top: 50px;
 }
 
 .buttons{
@@ -28,17 +24,4 @@
     height: 100px;
     align-items: center;
     justify-content: center;
-    
 }
-  
-  .button:visited {
-    color: white
-  }
-  
-  .button:hover {
-    background-color: pink;
-  }
-  
-  .button:active {
-    color: white;
-  }

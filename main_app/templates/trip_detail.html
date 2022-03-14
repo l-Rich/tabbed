@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'styles/trip_detail.css' %}" />
 
-{{trip.name}}
-{{trip.country}}
-{{trip.state}}
-{{trip.city}}
+<h1>{{trip.name}}</h1>
+<h4>Destination</h4>
+<p>{{trip.city}},{{trip.state}},{{trip.country}}</p>
+
+
 
 {% for activity in trip.activity.all %}
 
@@ -17,6 +20,12 @@ No Activities have been planned yet
 
 {{lodging.name}}
 {{loding.price}}
+
+<div>
+    <ul>
+        <li></li>
+    </ul>
+</div>
 
 <form action="{% url 'activity_create' trip.pk %}" method="post">
     {% csrf_token %}

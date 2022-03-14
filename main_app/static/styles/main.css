@@ -1,6 +1,8 @@
 .nav-container{
     display: grid;
-    justify-content: space-evenly;
+    margin-left: 40px;
+    margin-top: 20px;
+    grid-template-columns: 100vh auto auto auto auto;
 }
 /* .logo{
     justify-content: flex-start;

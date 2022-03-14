@@ -1,0 +1,14 @@
+body{
+    background-image: url('https://i.pinimg.com/originals/d9/76/8a/d9768ac767c9fdc4d3bd47fcd7cda95b.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.table{
+    box-shadow: 10px;
+}
+h1{
+    text-align: center;
+    margin-top: 45px;
+    font-family: 'Poppins', sans-serif;
+}

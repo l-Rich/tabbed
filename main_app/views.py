@@ -6,6 +6,8 @@ from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
 from django.urls import reverse
 from .models import Trip, Lodging, Activity 
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 class Home(TemplateView):
     template_name= "home.html"
@@ -75,4 +77,19 @@ class ActivityCreate(View):
 #         Activity.objects.create(name=name, type=type, price=price, max_occupancy=max_occupancy, trip=trip)
 #         return redirect ('trips', pk=pk)
     
-# Create your views here.
+class Signup(View):
+    # show a form to fill out
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    # on form ssubmit validate the form and login the user.
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("artist_list")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)
