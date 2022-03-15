@@ -1,0 +1,1 @@
+web: gunicorn {tabbed}.wsgi

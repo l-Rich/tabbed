@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import django_heroku
 from dotenv import load_dotenv
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -115,3 +116,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'main_app/static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/trips/'
+
+django_heroku.settings(locals())
