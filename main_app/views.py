@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.dates import DateDetailView
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
-from django.urls import reverse_lazy
+from django.urls import reverse
 from .models import Profile, Trip, Lodging, Activity, Profile, FriendList, FriendRequest 
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -53,7 +53,7 @@ class TripCreate(CreateView):
     
     def get_success_url(self):
         print(self.kwargs)
-        # return reverse('trip_detail', kwargs={'pk': self.object.pk})
+        return reverse('trip_list')
 
 class TripDetail(DetailView):
     model = Trip
