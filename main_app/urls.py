@@ -6,5 +6,8 @@ urlpatterns = [
     path('trips/new/', views.TripCreate.as_view(), name="trip_create"),
     path('trips/<int:pk>/', views.TripDetail.as_view(), name="trip_detail"),
     path('trips/<int:pk>/activity/new', views.ActivityCreate.as_view(), name="activity_create"),
-    path('accounts/signup/', views.Signup.as_view(), name="signup")
+    path('trips/<int:pk>/lodging/new', views.LodgingCreate.as_view(), name="lodging_create"),
+    path('accounts/signup/', views.Signup.as_view(), name="signup"),
+    path('profile/<int:pk>/', views.ProfilePage.as_view(), name="profile"),
+    path('profile/new/', views.ProfileCreate.as_view(), name="user_profile_create"),
 ]

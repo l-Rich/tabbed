@@ -1,11 +1,15 @@
 {% extends 'base.html' %} 
+{% load static%}
 {% block content %}
+<link rel="stylesheet" href="{% static 'styles/trip_create.css' %}" />
 <h1>Plan a Trip</h1>
 
-<form method="post">
+<div class = "container"><form method="post">
   {% csrf_token %} 
   {{form.as_p}} 
   <input type="submit" value="Submit" />
 </form>
+</div>
+<img src="https://ak.picdn.net/shutterstock/videos/1031097887/thumb/11.jpg"
 
 {% endblock %}

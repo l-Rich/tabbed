@@ -1,0 +1,12 @@
+{%extends 'base.html'%}{% load static %} {% block content %}
+<h1>User Profile</h1>
+
+{{profile.bio}}
+{{profile.profile_pic }}
+{% for friend_list in profile.friend_list.all %}
+{{friends.user}}
+hi
+{% empty %}
+You have no friends yet
+{% endfor %}
+{% endblock %}

@@ -18,8 +18,12 @@
 No Activities have been planned yet
 {% endfor %}
 
+{% for lodging in trip.lodging.all %}
 {{lodging.name}}
-{{loding.price}}
+{{lodging.price}}
+{{lodging.max_occupants}}
+{{lodging.type}}
+{% endfor %}
 
 <div>
     <ul>
@@ -50,6 +54,51 @@ No Activities have been planned yet
         </div>
         <div>
             <input type="submit" value="Add Activity" />
+        </div>
+    </div>
+</form>
+
+<form action="{% url 'lodging_create' trip.pk %}" method="post">
+    {% csrf_token %}
+    <div>
+        <div >
+            <input
+                class="input"
+                type="text"
+                name="name"
+                placeholder="Name of Hotel or AirBnB"
+                required
+            />
+        </div>
+        <div>
+            <input
+                class="input"
+                type="number"
+                name="price"
+                placeholder="Price"
+                required
+            />
+        </div>
+        <div>
+            <input
+                class="input"
+                type="text"
+                name="type"
+                placeholder="Hotel or AnirBnB"
+                required
+            />
+        </div>
+        <div>
+            <input
+                class="input"
+                type="number"
+                name="max_occupants"
+                placeholder="How many people can stay"
+                required
+            />
+        </div>
+        <div>
+            <input type="submit" value="Add Lodging" />
         </div>
     </div>
 </form>

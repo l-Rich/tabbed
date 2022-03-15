@@ -85,4 +85,15 @@ class FriendRequest(models.Model):
         self.save()
     def cancel(self):
         self.is_active = False
-        self.save()
+        self.save() 
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    friend_list = models.ForeignKey(FriendList, null=True, blank=True, on_delete=models.CASCADE)
+    possible_friends = models.ForeignKey(FriendRequest, null=True, blank=True, on_delete=models.CASCADE)
+    trips = models.ForeignKey(Trip, null=True, blank=True, on_delete=models.CASCADE)    
+    bio = models.TextField(blank=True, max_length=500)
+    profile_pic = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username

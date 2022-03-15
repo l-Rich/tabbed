@@ -1,12 +1,13 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect, get_object_or_404
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.dates import DateDetailView
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
-from django.urls import reverse
-from .models import Trip, Lodging, Activity 
+from django.urls import reverse_lazy
+from .models import Profile, Trip, Lodging, Activity, Profile, FriendList, FriendRequest 
 from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class Home(TemplateView):
@@ -40,6 +41,7 @@ class TripList(TemplateView):
             context["header"] = "Upcoming Trips" 
         return context
 
+
 class TripCreate(CreateView):
     model = Trip
     fields = ['name', 'country', 'state', 'city', 'date']
@@ -66,16 +68,16 @@ class ActivityCreate(View):
         Activity.objects.create(name=name, price=price, trip=trip)
         return redirect ('trip_detail', pk=pk)
     
-# class ActivityCreate(View):
+class LodgingCreate(View):
     
-#     def post(self, request, pk):
-#         name = request.POST.get("name")
-#         type = request.POST.get("type")
-#         price = request.POST.get("price")
-#         max_occupancy = request.POST.get("max")
-#         trip = Trip.objects.get(pk=pk)
-#         Activity.objects.create(name=name, type=type, price=price, max_occupancy=max_occupancy, trip=trip)
-#         return redirect ('trips', pk=pk)
+    def post(self, request, pk):
+        name = request.POST.get("name")
+        type = request.POST.get("type")
+        price = request.POST.get("price")
+        max_occupants = request.POST.get("max_occupants")
+        trip = Trip.objects.get(pk=pk)
+        Lodging.objects.create(name=name, type=type, price=price, max_occupants=max_occupants, trip=trip)
+        return redirect ('trip_detail', pk=pk)
     
 class Signup(View):
     # show a form to fill out
@@ -89,7 +91,32 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("artist_list")
+            return redirect("trip_list")
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
+class ProfilePage(DetailView):
+    model= User
+    template_name='registration/user_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        # users = Profile.objects.all()
+        context = super(ProfilePage, self).get_context_data(**kwargs)
+        context['profile']=Profile.objects.get(user=self.request.user)
+        print(context)
+        # page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+
+        # context["page_user"]= self.request.user
+        return context
+
+class ProfileCreate(CreateView):
+    model = Profile
+    fields = ['bio', 'profile_pic']
+    template_name = "registration/user_profile_create.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(ProfileCreate, self).form_valid(form)
+    
+    def get_success_url(self):
+        print(self.kwargs)
