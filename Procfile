@@ -1,1 +1,1 @@
-web: gunicorn tabbed.wsgi
+web: gunicorn tabbed_project.wsgi
