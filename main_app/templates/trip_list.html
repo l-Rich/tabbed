@@ -1,18 +1,20 @@
-{% extends 'base.html' %} {% block content %}
+{%extends 'base.html'%}{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'styles/trip_list.css' %}" />
 
 <h1> Upcoming Trips </h1>
 
 {% for trip in trips %}
-<div class="card" style="width: 18rem;">
-    <img src="https://completewellbeing.com/wp-content/uploads/2016/09/i-need-a-vacation.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{trip.name}}</h5>
-      <p>{{trip.date}}</p>
-      <p class="card-text">{{trip.country}}, {{trip.state}}, {{trip.city}}</p>
-      <a href="{% url 'trip_detail' trip.pk %}" class="btn btn-primary">View</a>
-    </div>
-  </div>
 
+    <div class="trips">
+      <div class="body">
+      <h5>{{trip.name}}</h5>
+      <p class="details">{{trip.country}}, {{trip.state}}, {{trip.city}}</p>
+      <a href="{% url 'trip_detail' trip.pk %}">View Details</a>
+      <a href="#" class="card-link">Cancel</a>
+      </div>
+    </div>
   {% endfor %}
+
+  <img src="https://img.freepik.com/free-vector/continuous-one-single-line-art-travel-girl-concept-beautiful-woman-fashion-tourist-hand-drawn-sketch-summer-voyage-agency-white-monochrome-vector-illustration_115739-1320.jpg"
 
 {% endblock %}

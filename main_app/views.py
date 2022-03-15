@@ -95,7 +95,7 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
-class ProfilePage(DetailView):
+class ProfilePage(TemplateView):
     model= User
     template_name='registration/user_profile.html'
 

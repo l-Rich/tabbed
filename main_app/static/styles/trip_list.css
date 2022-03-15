@@ -1,0 +1,7 @@
+.trips{
+    display: flex;
+}
+.body{
+    border: 3px outset black;
+    justify-content: center;
+}
