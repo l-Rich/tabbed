@@ -5,11 +5,14 @@ h1{
     text-align: center;
     margin-top: 45px;
     font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
 }
 p{
     text-align: center;
+    background-color: #ffffff;
 }
 .trip_details{
+    display: flex;
     position: relative;
     border-radius: 12px;
     background-color: #ffffff;
@@ -20,5 +23,22 @@ p{
     width: 500px;
     box-shadow: 0px 0px 10px #888888;
     align-items: center;
-    left:475px
+    left:475px; 
+    align-content: space-between;
+}
+
+.name{
+    padding-right: 300px;
+}
+.price{
+    text-align: right;
+}
+ul{
+    list-style-type: none;
+    padding: 10px; 
+    margin: 2px; 
+}
+
+body{
+    background-image: url('https://static.displate.com/280x392/displate/2020-06-10/3bd0d0223541340d2527fc1eaea06410_f50e9c85de05d605205db5f53ece2d41.jpg');
 }

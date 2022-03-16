@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'styles/trip_detail.css' %}" />
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
+    Add an Activity
   </button>
   
   <!-- Modal -->
@@ -57,22 +57,36 @@
 
 
 <div class = "trip_details">
+    <ul>
 {% for activity in trip.activity.all %}
-
-{{activity.name}}
-{{activity.price}}
-
+<li>
+    <div class="name">{{activity.name}}</div>
+    <div class="price">{{activity.price}}</div>
+</li>
 {% empty %}
 No Activities have been planned yet
 {% endfor %}
 
 {% for lodging in trip.lodging.all %}
-{{lodging.name}}
-{{lodging.price}}
+<li>
+    <div class="name">{{lodging.name}}</div>
+    <div class="price">{{lodging.price}}</div>
+</li>
+{% empty %}
+No Lodging has been planned yet
+{% endfor %}
+</ul>
+
+
+
 {{lodging.max_occupants}}
 {{lodging.type}}
-{% endfor %}
+
 </div>
+hello
+{{trip.total_costs}}
+
+
 
 <div class= "create_activity"><form action="{% url 'activity_create' trip.pk %}" method="post">
     {% csrf_token %}
@@ -89,7 +103,7 @@ No Activities have been planned yet
         <div>
             <input
                 class="input"
-                type="number"
+                type="float"
                 name="price"
                 placeholder="Price"
                 required

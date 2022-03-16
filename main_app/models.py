@@ -15,6 +15,13 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def total_costs(self):
+        total = 0
+        expenses = Activity.objects.filter(trip_id=self.id)
+        for thing in expenses:
+            total += thing.price
+        return total
 
 class Meta: 
     ordering = ['name']
@@ -26,7 +33,7 @@ class Traveler(models.Model):
 class Lodging(models.Model):
     name= models.CharField(max_length=30)
     type = models.CharField(max_length=30)
-    price = models.IntegerField()
+    price = models.DecimalField(max_digits=10,decimal_places=2)
     max_occupants = models.IntegerField()
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE, related_name="lodging")
         
@@ -35,11 +42,13 @@ class Lodging(models.Model):
 
 class Activity(models.Model):
     name = models.CharField(max_length=250)
-    price = models.CharField(max_length=30)
+    price = models.DecimalField(max_digits=10,decimal_places=2)
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE, related_name="activity")
     
     def __str__(self):
         return self.name
+    
+
     
 class FriendList(models.Model):
     user =models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")

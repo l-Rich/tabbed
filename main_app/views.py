@@ -1,3 +1,4 @@
+from os import PRIO_PROCESS
 from django.shortcuts import render , redirect, get_object_or_404
 from django.views import View
 from django.views.generic.base import TemplateView
@@ -59,15 +60,34 @@ class TripDetail(DetailView):
     model = Trip
     template_name = "trip_detail.html"
 
+
+        # page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+
+        # context["page_user"]= self.request.user
+
+
+    # 1. get the price of the activty acitivty.objects 
+    # add PRIO_PROCES
+    # add to conext
+
+
 class ActivityCreate(View):
     
     def post(self, request, pk):
         name = request.POST.get("name")
         price = request.POST.get("price")
         trip = Trip.objects.get(pk=pk)
+        print(type(price))
         Activity.objects.create(name=name, price=price, trip=trip)
         return redirect ('trip_detail', pk=pk)
-    
+        
+    def get_context_data(self, **kwargs):
+        # users = Profile.objects.all()
+        context = super(Activity, self).get_context_data(**kwargs)
+        context['total_price']=Activity.objects.get(total_price=self.request.price)
+        print(context)
+        return context
+
 class LodgingCreate(View):
     
     def post(self, request, pk):
@@ -78,6 +98,8 @@ class LodgingCreate(View):
         trip = Trip.objects.get(pk=pk)
         Lodging.objects.create(name=name, type=type, price=price, max_occupants=max_occupants, trip=trip)
         return redirect ('trip_detail', pk=pk)
+    
+
     
 class Signup(View):
     # show a form to fill out

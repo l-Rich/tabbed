@@ -5,8 +5,14 @@
         <div class="picture">
             <img src="https://github.com/l-Rich/tabbed/blob/master/with.png?raw=true" style="width: 600px">
         </div>
-        <div class="buttons">
-            <a class="button" href="{% url 'signup' %}">Sign Up</a> <a class="button" href="{% url 'login' %}">Log In</a>
-        </div>
+       {% if user.is_authenticated %} 
+            <div class="buttons">
+                <a class="button" href="{% url 'trip_create' %}">Plan a Trip</a> <a class="button" href="{% url 'logout' %}">Logout</a>
+            </div>
+        {% else %}
+            <div class="buttons">
+                <a class="button" href="{% url 'signup' %}">Sign Up</a> <a class="button" href="{% url 'login' %}">Log In</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
