@@ -3,18 +3,19 @@
 
 <h1> Upcoming Trips </h1>
 
-{% for trip in trips %}
+
 
     <div class="trips">
       <div class="body">
-      <h5>{{trip.name}}</h5>
-      <p class="details">{{trip.country}}, {{trip.state}}, {{trip.city}}</p>
-      <a href="{% url 'trip_detail' trip.pk %}">View Details</a>
-      <a href="#" class="card-link">Cancel</a>
+        {% for trip in trips %}
+        <div class="trip"><h5>{{trip.name}}</h5>
+        <p class="details">{{trip.country}}, {{trip.state}}, {{trip.city}}</p>
+        <a href="{% url 'trip_detail' trip.pk %}">View Details</a>
+        <a href="{% url 'trip_delete' trip.pk %}" class="card-link">Cancel</a>
+        </div>
+        {% endfor %}
       </div>
     </div>
-  {% endfor %}
-
-  <img src="https://img.freepik.com/free-vector/continuous-one-single-line-art-travel-girl-concept-beautiful-woman-fashion-tourist-hand-drawn-sketch-summer-voyage-agency-white-monochrome-vector-illustration_115739-1320.jpg"
+  
 
 {% endblock %}

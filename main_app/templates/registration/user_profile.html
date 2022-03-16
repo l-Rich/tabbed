@@ -1,21 +1,8 @@
 {%extends 'base.html'%}{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'styles/user_profile.css' %}" />
 <h1>User Profile</h1>
 
 <p>{{profile.bio}}</p>
 <p>{{profile.profile_pic }}</p>
 
-<p>{{profile.possible_friends}}</p>
-<p>{{profile.possible_friends}}</p>
-
-
-
-
-
-
-{% for friends in profile.friend_list.all %}
-{{friends.username}}
-<p>{{profile.friend_list}}</p>hi
-{% empty %}
-You have no friends yet
-{% endfor %}
 {% endblock %}

@@ -4,6 +4,9 @@
     margin-top: 20px;
     grid-template-columns: 100vh auto auto auto auto;
 }
+body{
+    font-family: 'Poppins', sans-serif;
+}
 /* .logo{
     justify-content: flex-start;
     padding-left: 20px;

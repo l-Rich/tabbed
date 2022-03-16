@@ -1,7 +1,23 @@
-.trips{
-    display: flex;
-}
+
 .body{
-    border: 3px outset black;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+    border: 5px outset black;
+    box-shadow: 0px 0px 10px black;
+    background-color: white;
+    margin-top: 40px;
+    padding: 20px;
+}
+body{
+    background-image: url('https://img.freepik.com/free-vector/continuous-one-single-line-art-travel-girl-concept-beautiful-woman-fashion-tourist-hand-drawn-sketch-summer-voyage-agency-white-monochrome-vector-illustration_115739-1320.jpg');
+    font-family: 'Poppins', sans-serif;
+}
+h5{
+    text-align: center;
+    margin-top: 45px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
 }

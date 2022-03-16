@@ -22,7 +22,7 @@ class Trip(models.Model):
         for thing in expenses:
             total += thing.price
         return total
-
+        
 class Meta: 
     ordering = ['name']
 
@@ -39,6 +39,8 @@ class Lodging(models.Model):
         
     def __str__(self):
         return self.name
+
+
 
 class Activity(models.Model):
     name = models.CharField(max_length=250)

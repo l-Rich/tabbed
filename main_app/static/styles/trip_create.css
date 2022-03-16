@@ -16,5 +16,8 @@
       text-align: center;
   }
   h1{
-      text-align: center;
+    text-align: center;
+    margin-top: 45px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
   }

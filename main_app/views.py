@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect, get_object_or_404
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.dates import DateDetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 from .models import Profile, Trip, Lodging, Activity, Profile, FriendList, FriendRequest 
@@ -56,20 +56,19 @@ class TripCreate(CreateView):
         print(self.kwargs)
         return reverse('trip_list')
 
+class TripDelete(DeleteView):
+    model = Trip
+    template_name = "trip_delete_confirmation.html"
+    success_url = "/trips/"
+
+class ActivityDelete(DeleteView):
+    model = Activity
+    template_name = "activity_delete_confirmation.html"
+    success_url = "/trips/<int:pk>"
+
 class TripDetail(DetailView):
     model = Trip
     template_name = "trip_detail.html"
-
-
-        # page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-
-        # context["page_user"]= self.request.user
-
-
-    # 1. get the price of the activty acitivty.objects 
-    # add PRIO_PROCES
-    # add to conext
-
 
 class ActivityCreate(View):
     

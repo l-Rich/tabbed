@@ -2,59 +2,9 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/trip_detail.css' %}" />
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add an Activity
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class= "create_activity"><form action="{% url 'activity_create' trip.pk %}" method="post">
-                {% csrf_token %}
-                <div>
-                    <div >
-                        <input
-                            class="input"
-                            type="text"
-                            name="name"
-                            placeholder="Name of Activity"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input
-                            class="input"
-                            type="number"
-                            name="price"
-                            placeholder="Price"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input type="submit" value="Add Activity" />
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
 <h1>{{trip.name}}</h1>
 <p>{{trip.city}},{{trip.state}},{{trip.country}}</p>
-
-
 
 <div class = "trip_details">
     <ul>
@@ -67,25 +17,10 @@
 No Activities have been planned yet
 {% endfor %}
 
-{% for lodging in trip.lodging.all %}
-<li>
-    <div class="name">{{lodging.name}}</div>
-    <div class="price">{{lodging.price}}</div>
-</li>
-{% empty %}
-No Lodging has been planned yet
-{% endfor %}
-</ul>
-
-
-
-{{lodging.max_occupants}}
-{{lodging.type}}
+<div class="total">Total Cost: ${{trip.total_costs}}</div>
+<!-- <div class="total">{{trip.split_cost}}</div> -->
 
 </div>
-hello
-{{trip.total_costs}}
-
 
 
 <div class= "create_activity"><form action="{% url 'activity_create' trip.pk %}" method="post">
@@ -110,59 +45,10 @@ hello
             />
         </div>
         <div>
-            <input type="submit" value="Add Activity" />
+            <input class= "button" type="submit" value="Add Activity" />
         </div>
     </div>
 </form>
 </div>
 
-
-<div class="create_lodging"><form action="{% url 'lodging_create' trip.pk %}" method="post">
-    {% csrf_token %}
-    <div>
-        <div >
-            <input
-                class="input"
-                type="text"
-                name="name"
-                placeholder="Name of Hotel or AirBnB"
-                required
-            />
-        </div>
-        <div>
-            <input
-                class="input"
-                type="number"
-                name="price"
-                placeholder="Price"
-                required
-            />
-        </div>
-        <div>
-            <input
-                class="input"
-                type="text"
-                name="type"
-                placeholder="Hotel or AnirBnB"
-                required
-            />
-        </div>
-        <div>
-            <input
-                class="input"
-                type="number"
-                name="max_occupants"
-                placeholder="How many people can stay"
-                required
-            />
-        </div>
-        <div>
-            <input type="submit" value="Add Lodging" />
-        </div>
-    </div>
-</form>
-</div>
-
-
-<img src="https://static.displate.com/280x392/displate/2020-06-10/3bd0d0223541340d2527fc1eaea06410_f50e9c85de05d605205db5f53ece2d41.jpg">
 {% endblock %}

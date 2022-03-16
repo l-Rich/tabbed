@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Are you sure you want to Delete {{trip.name}}?</h1>
+<form method="post">
+  {% csrf_token %}
+  <div class="buttons">
+    <input class="button" type="submit" value="Confirm" />
+    <a class="button is-primary" href="{% url 'trip_list'%}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
